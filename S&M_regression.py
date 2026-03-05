@@ -1,19 +1,18 @@
-
-#Simple Linear Regression
+# Simple Linear Regression
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-df = pd.read_csv("YOUR_FILE_PATH/YOUR_FILE.csv")  
-# 🔴 CHANGE FILE PATH
+df = pd.read_csv(r"C:\dataset\iris-write-from-docker.csv")  
+# CHANGE FILE PATH if required
 
-X = df[["FEATURE_COLUMN"]]  
-# 🔴 CHANGE FEATURE_COLUMN
+X = df[["sepal_length"]]  
+# CHANGE FEATURE COLUMN if needed
 
-y = df["TARGET_COLUMN"]  
-# 🔴 CHANGE TARGET_COLUMN
+y = df["sepal_width"]  
+# CHANGE TARGET COLUMN if needed
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
@@ -29,11 +28,15 @@ print("R2 Score:", r2_score(y_test, y_pred))
 
 #Multiple Linear Regression
 
-X = df.drop("TARGET_COLUMN", axis=1)  
-# 🔴 CHANGE TARGET_COLUMN
+# Remove categorical column
+df_numeric = df.drop(columns=["class"])  
+# REMOVE OR CHANGE COLUMN if dataset contains other text columns
 
-y = df["TARGET_COLUMN"]  
-# 🔴 CHANGE TARGET_COLUMN
+X = df_numeric.drop("sepal_width", axis=1)  
+# CHANGE TARGET COLUMN
+
+y = df_numeric["sepal_width"]  
+# CHANGE TARGET COLUMN
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
