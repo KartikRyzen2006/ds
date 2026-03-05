@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-df = pd.read_csv("YOUR_FILE_PATH/YOUR_FILE.csv")  
+df = pd.read_csv("C:\dataset\iris-write-from-docker.csv")  
 # 🔴 CHANGE FILE PATH
 
 X = df.select_dtypes(include='number')
